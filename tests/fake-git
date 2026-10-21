@@ -1,0 +1,11 @@
+#!/bin/sh
+# A git that fails the command naming $FAKE_GIT_FAIL among its arguments
+# and runs the real git otherwise: the engine's tests use it to reach the
+# error path of every git command they cannot make fail for real.
+for arg in "$@"; do
+  if [ -n "${FAKE_GIT_FAIL:-}" ] && [ "$arg" = "$FAKE_GIT_FAIL" ]; then
+    echo "fake git: $FAKE_GIT_FAIL fails" >&2
+    exit 1
+  fi
+done
+exec git "$@"

@@ -1,0 +1,22 @@
+name: gate
+
+# Shared by every sloptopop Rust repo; keep identical across repos.
+# Runs scripts/gate.sh: zero warnings, all tests pass, 100% coverage,
+# every mutant caught, docs build, cargo-deny clean.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # rustup on the runner reads rust-toolchain.toml and installs the
+      # pinned toolchain with clippy, rustfmt and llvm-tools on first use.
+      - run: rustup show active-toolchain
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-llvm-cov,cargo-deny,cargo-mutants
+      - run: scripts/gate.sh

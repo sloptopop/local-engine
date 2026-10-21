@@ -1,0 +1,48 @@
+# cargo-deny policy shared by every sloptopop Rust repo.
+# Keep this file identical across repos; change it everywhere at once.
+# https://embarkstudios.github.io/cargo-deny/
+
+[graph]
+all-features = true
+
+[advisories]
+# RustSec vulnerabilities are always errors; these extend that to the rest.
+yanked = "deny"
+unmaintained = "all"
+unsound = "all"
+ignore = []
+
+[licenses]
+# Permissive licences only: anything here is linked into our binaries.
+# GPL/AGPL tools may be used as separate processes, never as crate deps.
+allow = [
+    "0BSD",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "CC0-1.0",
+    "ISC",
+    "MIT",
+    "MPL-2.0",
+    "Unicode-3.0",
+    "Zlib",
+]
+confidence-threshold = 0.93
+unused-allowed-license = "allow"
+
+[licenses.private]
+# Our own unpublished crates have no licence field yet.
+ignore = true
+
+[bans]
+multiple-versions = "warn"
+wildcards = "deny"
+allow-wildcard-paths = true
+highlight = "all"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []

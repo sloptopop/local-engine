@@ -1,0 +1,26 @@
+# cargo-about configuration: third-party notices for the shipped binary.
+# Regenerate after any change to Cargo.lock, and in every release build
+# (--locked, not --frozen: the clarified licence files below are fetched):
+#   cargo about generate --locked -c about.toml about.hbs -o THIRD-PARTY-NOTICES.md
+accepted = [
+    "0BSD",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "CC0-1.0",
+    "ISC",
+    "MIT",
+    "MPL-2.0",
+    "Unicode-3.0",
+    "Zlib",
+]
+targets = [
+    "aarch64-apple-darwin",
+    "x86_64-apple-darwin",
+    "x86_64-unknown-linux-gnu",
+    "aarch64-unknown-linux-gnu",
+]
+ignore-build-dependencies = true
+ignore-dev-dependencies = true
+private = { ignore = true }

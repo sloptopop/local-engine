@@ -1,0 +1,14 @@
+# Clippy configuration shared by every sloptopop Rust repo.
+# Keep this file identical across repos; change it everywhere at once.
+
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true
+allow-panic-in-tests = true
+allow-indexing-slicing-in-tests = true
+allow-print-in-tests = true
+too-many-lines-threshold = 80
+cognitive-complexity-threshold = 15
+
+disallowed-methods = [
+    { path = "std::thread::sleep", reason = "blocks the thread; use the async runtime's timer" },
+]

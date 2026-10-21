@@ -1,0 +1,7 @@
+# Shared by every sloptopop Rust repo; keep identical across repos.
+# Run Clippy as the compiler for this repo's own crates (not dependencies),
+# so `cargo build`, `check` and `test` fail on any Clippy lint, not only
+# `cargo clippy`. Combined with `warnings = "deny"` in Cargo.toml, nothing
+# with a warning compiles.
+[build]
+rustc-workspace-wrapper = "clippy-driver"

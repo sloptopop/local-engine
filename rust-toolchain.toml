@@ -1,0 +1,6 @@
+# Shared by every sloptopop Rust repo; bump in every repo at once.
+# Pinned so a new Clippy release can't turn the build red overnight.
+[toolchain]
+channel = "1.99.0"
+components = ["clippy", "rustfmt", "llvm-tools-preview"]
+profile = "minimal"
